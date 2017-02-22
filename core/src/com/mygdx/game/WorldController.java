@@ -200,17 +200,16 @@ public class WorldController extends InputAdapter {
 
     private void handleInputGame (float deltaTime) {
         if (camera.hasTarget(level.whiteBall.body)) {
-            // movimento
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-                level.whiteBall.body.applyLinearImpulse(-1f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+            // movimento 
+             if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
+                level.whiteBall.body.applyLinearImpulse(-1.0f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
             } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-                level.whiteBall.body.applyForceToCenter(300f,0,true);
+                level.whiteBall.body.applyLinearImpulse(1.0f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
             } else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
-                level.whiteBall.body.applyLinearImpulse(0,1f,level.whiteBall.origin.x,level.whiteBall.origin.y,true);
+                level.whiteBall.body.applyLinearImpulse(0,1.0f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
             } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-                level.whiteBall.body.applyLinearImpulse(0,-1f,level.whiteBall.origin.x,level.whiteBall.origin.y,true);
+                level.whiteBall.body.applyLinearImpulse(0,-1f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
             }
-        }
     }
 
     private void handleDebugInput(float delta) {
