@@ -47,7 +47,7 @@ public class WorldController extends InputAdapter {
     private void initLevel(){
         score = 0;
         level = new Level(Constants.LEVEL_01);
-        camera.setTarget(level.whiteBall);
+        camera.setTarget(level.whiteBall.body);
         initPhysics();
     }
 
@@ -109,6 +109,9 @@ public class WorldController extends InputAdapter {
             bodyDef.type = BodyType.DynamicBody;
             bodyDef.position.set(ball.position);
             Body body = b2world.createBody(bodyDef);
+            body.setLinearDamping(0.5f);
+            body.setAngularDamping(0.5f);
+            body.setFixedRotation(false);
             ball.body = body;
             CircleShape ballShape = new CircleShape();
             float raio = ball.dimension.x / 2;
@@ -129,15 +132,18 @@ public class WorldController extends InputAdapter {
 
         bodyDefWhiteBall.position.set(level.whiteBall.position);
         Body bodyBall = b2world.createBody(bodyDefWhiteBall);
+        bodyBall.setLinearDamping(0.5f);
+        bodyBall.setAngularDamping(0.5f);
+        bodyBall.setFixedRotation(false);
         level.whiteBall.body = bodyBall;
         CircleShape ballShape = new CircleShape();
         float raio = level.whiteBall.dimension.x /2;
         ballShape.setRadius(raio);
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = ballShape;
-        //fixtureDef.density = 5.0f;
+        fixtureDef.density = 5.0f;
         fixtureDef.restitution = 0.6f;
-        fixtureDef.friction = 1.0f;
+        fixtureDef.friction = 10.0f;
         level.whiteBall.origin.set(ballShape.getPosition());
         level.whiteBall.body.createFixture(fixtureDef);
         ballShape.dispose();
@@ -193,10 +199,10 @@ public class WorldController extends InputAdapter {
     ///////////////////////////////////Classes de debug/////////////////////////////////////
 
     private void handleInputGame (float deltaTime) {
-        if (camera.hasTarget(level.whiteBall)) {
+        if (camera.hasTarget(level.whiteBall.body)) {
             // movimento
             if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-                level.whiteBall.body.applyLinearImpulse(-1f,0,level.whiteBall.origin.x,level.whiteBall.origin.y,true);
+                level.whiteBall.body.applyLinearImpulse(-1f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
             } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
                 level.whiteBall.body.applyForceToCenter(300f,0,true);
             } else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
@@ -265,7 +271,7 @@ public class WorldController extends InputAdapter {
         }
         // Toggle camera follow
         else if (keycode == Input.Keys.ENTER) {
-            camera.setTarget(camera.hasTarget() ? null: level.whiteBall);
+            camera.setTarget(camera.hasTarget() ? null: level.whiteBall.body);
             Gdx.app.debug(TAG, "Camera follow enabled: " + camera.hasTarget());
         }
         return false;

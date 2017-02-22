@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Body;
 import com.mygdx.game.Models.AbstractGameObject;
 
 /**
@@ -15,7 +16,7 @@ public class CameraHelper {
     private final float MAX_ZOOM_IN = 0.25f;
     private final float MAX_ZOOM_OUT = 10.0f;
 
-    private AbstractGameObject target;
+    private Body target;
     private Vector2 position;
     private float zoom;
 
@@ -27,8 +28,8 @@ public class CameraHelper {
 
     public void update(float delta){
         if(!hasTarget())return;
-        position.x = target.position.x + target.origin.x;
-        position.y = target.position.y + target.origin.y;
+        position.x = target.getPosition().x ;
+        position.y = target.getPosition().y ;
         position.y = Math.max(-1f, position.y);
     }
 
@@ -52,11 +53,11 @@ public class CameraHelper {
         return zoom;
     }
 
-    public void setTarget(AbstractGameObject target){
+    public void setTarget(Body target){
         this.target = target;
     }
 
-    public AbstractGameObject getTarget() {
+    public Body getTarget() {
         return target;
     }
 
@@ -65,7 +66,7 @@ public class CameraHelper {
     }
 
 
-    public  boolean hasTarget(AbstractGameObject target){
+    public  boolean hasTarget(Body target){
         return hasTarget() && this.target.equals(target) ;
     }
 

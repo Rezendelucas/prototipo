@@ -30,7 +30,7 @@ public class Ball extends AbstractGameObject {
         // Draw image
         reg = regBall;
         batch.draw(reg.getTexture(),
-                position.x - 0.5f, position.y - 0.5f,
+                body.getPosition().x - 0.5f, body.getPosition().y - 0.5f,
                 origin.x, origin.y,
                 dimension.x, dimension.y,
                 scale.x, scale.y,
@@ -42,15 +42,15 @@ public class Ball extends AbstractGameObject {
 
     @Override
     public void update (float deltaTime) {
-        position.set(body.getPosition());
-        Vector2 atrito;
-        float torque;
-        atrito = body.getLinearVelocity();
-        atrito.x = atrito.x * -0.1f ;
-        atrito.y = atrito.y * -0.1f ;
-        body.applyForce(atrito,origin,true);
-        torque = body.getAngularVelocity();
-        torque = torque * -0.8f;
-        body.applyTorque(torque,true);
+     //   position.set(body.getPosition());
+     //   Vector2 atrito;
+     //   float torque;
+     //   atrito = body.getLinearVelocity();
+     //   atrito.x = atrito.x * -0.1f ;
+     //   atrito.y = atrito.y * -0.1f ;
+     //   body.applyForce(atrito,origin,true);
+     //   torque = body.getAngularVelocity();
+     //   torque = torque * -0.8f;
+     //   body.applyTorque(torque,true);
     }
 }
