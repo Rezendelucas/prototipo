@@ -255,7 +255,7 @@ public class WorldController extends InputAdapter {
             Gdx.app.debug(TAG,"ZoomOut");
         }
 
-    }
+    }}
 
     private void  moveCamera(float x , float y){
         x += camera.getPosition().x;

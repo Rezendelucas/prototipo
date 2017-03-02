@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="C:\Users\Cássio\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-backend-android\1.9.4\194b33382d6d58fad031521ba3331d926c476c9b\gdx-backend-android-1.9.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="194b33382d6d58fad031521ba3331d926c476c9b">
+        <dex dex="C:\prototipo\prototipofinuka\prototipo\android\build\intermediates\pre-dexed\debug\gdx-backend-android-1.9.4_ffed49ba9817d3f10384eb557d652327d3198e53.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\prototipo\prototipofinuka\prototipo\core\build\libs\core-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="6bd195e69d7896abb6e526ead82265e7c7e880b2">
+        <dex dex="C:\prototipo\prototipofinuka\prototipo\android\build\intermediates\pre-dexed\debug\core-1.0_833f17a98c88aa6b2a33deb21e54076dfb3eddf6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Cássio\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx-box2d\1.9.4\98a0d25c9f0637fecac6e4aacf7287aa635964f5\gdx-box2d-1.9.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="98a0d25c9f0637fecac6e4aacf7287aa635964f5">
+        <dex dex="C:\prototipo\prototipofinuka\prototipo\android\build\intermediates\pre-dexed\debug\gdx-box2d-1.9.4_0d93a9037eb937ce9640ae139ef8500eab12eb34.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\Cássio\.gradle\caches\modules-2\files-2.1\com.badlogicgames.gdx\gdx\1.9.4\4b4b7962d1bc75af0438f5c81ec1010557bc9ee5\gdx-1.9.4.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="4b4b7962d1bc75af0438f5c81ec1010557bc9ee5">
+        <dex dex="C:\prototipo\prototipofinuka\prototipo\android\build\intermediates\pre-dexed\debug\gdx-1.9.4_d1ebc3af9f328f9bcbfe226ba3e538c94eccb28d.jar" />
+    </item>
+
+</items>
