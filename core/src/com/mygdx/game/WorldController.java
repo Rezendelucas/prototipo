@@ -47,8 +47,8 @@ public class WorldController extends InputAdapter {
     private void initLevel(){
         score = 0;
         level = new Level(Constants.LEVEL_01);
-        camera.setTarget(level.whiteBall.body);
         initPhysics();
+        camera.setTarget(level.whiteBall.body);
     }
 
     ////////////////////////////////////////inicia a fisica////////////////////////////////////////////////
@@ -200,15 +200,15 @@ public class WorldController extends InputAdapter {
 
     private void handleInputGame (float deltaTime) {
         if (camera.hasTarget(level.whiteBall.body)) {
-            // movimento 
-             if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-                level.whiteBall.body.applyLinearImpulse(-1.0f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
-            } else if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-                level.whiteBall.body.applyLinearImpulse(1.0f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
-            } else if (Gdx.input.isKeyPressed(Input.Keys.UP)){
-                level.whiteBall.body.applyLinearImpulse(0,1.0f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
-            } else if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-                level.whiteBall.body.applyLinearImpulse(0,-1f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+            // movimento
+            if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
+                level.whiteBall.body.applyLinearImpulse(-50f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
+                level.whiteBall.body.applyLinearImpulse(50f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
+                level.whiteBall.body.applyLinearImpulse(0,50f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
+                level.whiteBall.body.applyLinearImpulse(0,-50f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
             }
     }
 
@@ -267,13 +267,16 @@ public class WorldController extends InputAdapter {
         if(keycode == Input.Keys.R){
             init();
             Gdx.app.debug(TAG,"Game world resetado");
-        }
-        // Toggle camera follow
-        else if (keycode == Input.Keys.ENTER) {
+        } else if (keycode == Input.Keys.ENTER) {// Toggle camera follow
             camera.setTarget(camera.hasTarget() ? null: level.whiteBall.body);
             Gdx.app.debug(TAG, "Camera follow enabled: " + camera.hasTarget());
         }
         return false;
     }
-
+    public boolean KeyDown(int keycode){
+        if(keycode == Input.Keys.LEFT) {
+            level.whiteBall.body.applyLinearImpulse(-10f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+        }
+        return false;
+    }
 }
