@@ -210,7 +210,6 @@ public class WorldController extends InputAdapter {
             } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
                 level.whiteBall.body.applyLinearImpulse(0,-50f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
             }
-        }
     }
 
     private void handleDebugInput(float delta) {
@@ -256,7 +255,7 @@ public class WorldController extends InputAdapter {
             Gdx.app.debug(TAG,"ZoomOut");
         }
 
-    }
+    }}
 
     private void  moveCamera(float x , float y){
         x += camera.getPosition().x;
