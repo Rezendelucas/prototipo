@@ -202,14 +202,15 @@ public class WorldController extends InputAdapter {
         if (camera.hasTarget(level.whiteBall.body)) {
             // movimento
             if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
-                level.whiteBall.body.applyLinearImpulse(-50f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+                level.whiteBall.body.applyLinearImpulse(-50f, 0, level.whiteBall.body.getPosition().x, level.whiteBall.body.getPosition().y, true);
             } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
-                level.whiteBall.body.applyLinearImpulse(50f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
-            } else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)){
-                level.whiteBall.body.applyLinearImpulse(0,50f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+                level.whiteBall.body.applyLinearImpulse(50f, 0, level.whiteBall.body.getPosition().x, level.whiteBall.body.getPosition().y, true);
+            } else if (Gdx.input.isKeyJustPressed(Input.Keys.UP)) {
+                level.whiteBall.body.applyLinearImpulse(0, 50f, level.whiteBall.body.getPosition().x, level.whiteBall.body.getPosition().y, true);
             } else if (Gdx.input.isKeyJustPressed(Input.Keys.DOWN)) {
-                level.whiteBall.body.applyLinearImpulse(0,-50f,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
+                level.whiteBall.body.applyLinearImpulse(0, -50f, level.whiteBall.body.getPosition().x, level.whiteBall.body.getPosition().y, true);
             }
+        }
     }
 
     private void handleDebugInput(float delta) {
@@ -255,7 +256,7 @@ public class WorldController extends InputAdapter {
             Gdx.app.debug(TAG,"ZoomOut");
         }
 
-    }}
+    }
 
     private void  moveCamera(float x , float y){
         x += camera.getPosition().x;
