@@ -172,7 +172,7 @@ public class WorldController extends InputAdapter {
     }
 
     private void testCollisions () {
-        r1.set(level.whiteBall.position.x, level.whiteBall.position.y, level.whiteBall.bounds.width, level.whiteBall.bounds.height);
+        r1.set(level.whiteBall.body.getPosition().x - 0.5f, level.whiteBall.body.getPosition().y - 0.5f, level.whiteBall.bounds.width, level.whiteBall.bounds.height);
 
         for (GoldCoin goldcoin : level.goldcoins) {
             if (goldcoin.collected) continue;
@@ -185,7 +185,7 @@ public class WorldController extends InputAdapter {
 
         for (GoldCoin goldcoin : level.goldcoins) {
             for (Ball ball : level.balls) {
-                r1.set(ball.position.x, ball.position.y, ball.bounds.width, ball.bounds.height);
+                r1.set(ball.body.getPosition().x - 0.5f, ball.body.getPosition().y - 0.5f, ball.bounds.width, ball.bounds.height);
                 if (goldcoin.collected) continue;
                 r2.set(goldcoin.position.x, goldcoin.position.y,
                         goldcoin.bounds.width, goldcoin.bounds.height);
@@ -274,10 +274,5 @@ public class WorldController extends InputAdapter {
         }
         return false;
     }
-    public boolean KeyDown(int keycode){
-        if(keycode == Input.Keys.LEFT) {
-            level.whiteBall.body.applyLinearImpulse(-10f,0,level.whiteBall.body.getPosition().x,level.whiteBall.body.getPosition().y,true);
-        }
-        return false;
-    }
+
 }
