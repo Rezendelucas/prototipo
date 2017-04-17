@@ -1,15 +1,18 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.mygdx.game.Models.Assets;
+import com.mygdx.game.Screens.MenuScreen;
 
 import java.awt.Color;
 
 
-public class FinukaMain implements ApplicationListener {
+public class FinukaMain extends Game {
 	private static final java.lang.String Tag = FinukaMain.class.getName();
 
 	private  WorldController worldController;
@@ -18,42 +21,10 @@ public class FinukaMain implements ApplicationListener {
 
 	@Override
 	public void create () {
+		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Assets.instance.init(new AssetManager());
-		//inicializar o render e controller do world da start no game
-		worldController = new WorldController();
-		worldRenderer = new WorldRenderer(worldController);
-		paused = false;
+		Gdx.app.debug(Tag," Tela do game pronta para iniciar: ");
+		setScreen(new MenuScreen(this));
 	}
 
-	@Override
-	public void render () {
-		if(!paused) {
-			worldController.update(Gdx.graphics.getDeltaTime());
-		}
-		Gdx.gl.glClearColor(0.3f,0.3f,0.3f,0);//fundo setado em azul hexadecimal transformado em float
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);//limpar o buff de imagens
-		worldRenderer.render();
-	}
-
-	@Override
-	public void resize(int width, int height) {
-		worldRenderer.resize(width, height);
-	}
-
-	@Override
-	public void pause() {
- 		paused = true;
-	}
-
-	@Override
-	public void resume() {
-		Assets.instance.init(new AssetManager());
-		paused = false;
-	}
-
-	@Override
-	public void dispose () {
-		worldRenderer.dispose();
-		Assets.instance.dispose();
-	}
 }

@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
@@ -16,6 +17,7 @@ import com.mygdx.game.Models.Ball;
 import com.mygdx.game.Models.Borda;
 import com.mygdx.game.Models.GoldCoin;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.mygdx.game.Screens.MenuScreen;
 
 
 /**
@@ -30,11 +32,13 @@ public class WorldController extends InputAdapter {
     public CameraHelper camera;
     public Level level;
     public int score;
+    public Game game;
     //retangulos para detectar colisões com corpos nao fisicos
     private Rectangle r1 = new Rectangle();
     private Rectangle r2 = new Rectangle();
 
-    public WorldController(){
+    public WorldController(Game game){
+        this.game = game;
         init();
     }
 
@@ -258,6 +262,11 @@ public class WorldController extends InputAdapter {
 
     }
 
+    private void backToMenu () {
+// switch to menu screen
+        game.setScreen(new MenuScreen(game));
+    }
+
     private void  moveCamera(float x , float y){
         x += camera.getPosition().x;
         y += camera.getPosition().y;
@@ -271,6 +280,8 @@ public class WorldController extends InputAdapter {
         } else if (keycode == Input.Keys.ENTER) {// Toggle camera follow
             camera.setTarget(camera.hasTarget() ? null: level.whiteBall.body);
             Gdx.app.debug(TAG, "Camera follow enabled: " + camera.hasTarget());
+        }else if (keycode == Input.Keys.ESCAPE) {// back to menu
+            backToMenu();
         }
         return false;
     }
