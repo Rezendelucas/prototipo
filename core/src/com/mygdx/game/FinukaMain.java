@@ -14,11 +14,7 @@ import java.awt.Color;
 
 public class FinukaMain extends Game {
 	private static final java.lang.String Tag = FinukaMain.class.getName();
-
-	private  WorldController worldController;
-	private  WorldRenderer   worldRenderer;
-	private boolean paused;
-
+	
 	@Override
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);

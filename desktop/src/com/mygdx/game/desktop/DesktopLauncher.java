@@ -17,12 +17,13 @@ public class DesktopLauncher {
 			settings.maxHeight = 1024;
 			settings.debug = drawDebugOutline;
 			TexturePacker2.process(settings,"android/assets-raw/images","android/assets/images","Finuka.pack");
+			TexturePacker2.process(settings,"android/assets-raw/images-ui","android/assets/images-ui","Finuka-ui.pack");
 		}
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "FinukaMain";
 		config.useGL30 = false;
-		config.width = 1240; //800;
-		config.height = 720;//480;
+		config.width  = 1240;//800;
+		config.height = 720 ;//480;
 		new LwjglApplication(new FinukaMain(), config);
 	}
 }
