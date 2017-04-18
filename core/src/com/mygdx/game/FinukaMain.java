@@ -14,7 +14,7 @@ import java.awt.Color;
 
 public class FinukaMain extends Game {
 	private static final java.lang.String Tag = FinukaMain.class.getName();
-	
+
 	@Override
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
