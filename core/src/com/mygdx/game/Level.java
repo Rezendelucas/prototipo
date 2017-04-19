@@ -74,7 +74,7 @@ public class Level {
         goldcoins = new Array<GoldCoin>();
 
         // load image file that represents the level data
-        Pixmap pixmap = new Pixmap(Gdx.files.internal(Constants.LEVEL_01));
+        Pixmap pixmap = new Pixmap(Gdx.files.internal(com.mygdx.game.Utils.Constants.LEVEL_01));
 
         // scan pixels from top-left to bottom-right
         int lastPixel = -1;
@@ -90,7 +90,6 @@ public class Level {
 
                 if (BLOCK_TYPE.EMPTY.sameColor(currentPixel)) {}   // Nada
                 else if (BLOCK_TYPE.BORDA_H.sameColor(currentPixel)) {
-                    Gdx.app.debug(TAG, "borda h criada");
                     if (lastPixel != currentPixel) {
                         obj = new Borda();
                         float heightIncreaseFactor = 1f;
@@ -101,7 +100,6 @@ public class Level {
                         bordas_h.get(bordas_h.size - 1).increaseLength(1);
                     }
                 }else if (BLOCK_TYPE.BORDA_V.sameColor(currentPixel)) {
-                    Gdx.app.debug(TAG, "borda v criada");
                     if (lastPixel != currentPixel) {
                         obj = new Borda();
                         float heightIncreaseFactor = 1f;
@@ -110,7 +108,6 @@ public class Level {
                         bordas_v.add((Borda) obj);
                     }
                 }else if (BLOCK_TYPE.CANTO.sameColor(currentPixel)) {
-                    Gdx.app.debug(TAG, "canto criada");
                     if (lastPixel != currentPixel) {
                         obj = new Borda();
                          float heightIncreaseFactor = 1f;

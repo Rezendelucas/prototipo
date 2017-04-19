@@ -21,7 +21,6 @@ public class BallWhite extends AbstractGameObject {
     public void init () {
         dimension.set(1, 1);
         regBallWhite = Assets.instance.whiteball.whiteball;
-        origin.set(bounds.width / 2, bounds.height / 2); //coloca o centro da imagem no centro do objeto
         bounds.set(0, 0, dimension.x, dimension.y); //seta caixa de colisao
    }
 
@@ -39,19 +38,5 @@ public class BallWhite extends AbstractGameObject {
                 reg.getRegionX(), reg.getRegionY(),
                 reg.getRegionWidth(), reg.getRegionHeight(),
                 true, false);
-    }
-
-    @Override
-    public void update (float deltaTime) {
-       // position.set(body.getPosition());
-      //  Vector2 atrito;
-       // float torque;
-       // atrito = body.getLinearVelocity();
-        //atrito.x = atrito.x * -0.5f ;
-       // atrito.y = atrito.y * -0.5f ;
-       // body.applyForce(atrito,origin,true);
-       // torque = body.getAngularVelocity();
-       //torque = torque * -0.8f;
-       //body.applyTorque(torque,true);
     }
 }

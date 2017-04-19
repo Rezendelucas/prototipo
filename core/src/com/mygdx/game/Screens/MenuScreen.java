@@ -4,26 +4,17 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 ////
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
-import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.ui.SelectBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.Slider;
 import com.badlogic.gdx.scenes.scene2d.ui.Stack;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
-import com.mygdx.game.Models.Assets;
-import com.mygdx.game.Constants;
+import com.mygdx.game.Utils.Constants;
 
 /**
  * Created by LucasRezende on 22/03/2017.
@@ -97,14 +88,14 @@ public class MenuScreen extends AbstractGameScreen {
 
     private void rebuildStage () {
         skinFinuka = new Skin(Gdx.files.internal(Constants.SKIN_FINUKA_UI), new TextureAtlas(Constants.TEXTURE_ATLAS_UI));
-        // build all layers
+        // Construir os layers
         Table layerBackground = buildBackgroundLayer();
         Table layerObjects = buildObjectsLayer();
         Table layerLogos = buildLogosLayer();
         Table layerControls = buildControlsLayer();
         Table layerOptionsWindow = buildOptionsWindowLayer();
 
-        // assemble stage for menu screen
+        // Adcionar menu screen
         stage.clear();
         Stack stack = new Stack();
         stage.addActor(stack);

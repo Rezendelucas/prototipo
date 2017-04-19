@@ -22,8 +22,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "FinukaMain";
 		config.useGL30 = false;
-		config.width  = 1240;//800;
-		config.height = 720 ;//480;
+		config.width  = 800;
+		config.height = 480;
 		new LwjglApplication(new FinukaMain(), config);
 	}
 }

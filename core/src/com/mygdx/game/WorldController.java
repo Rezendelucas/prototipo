@@ -5,6 +5,8 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputAdapter;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
@@ -33,9 +35,16 @@ public class WorldController extends InputAdapter {
     public Level level;
     public int score;
     public Game game;
+
     //retangulos para detectar colisões com corpos nao fisicos
     private Rectangle r1 = new Rectangle();
     private Rectangle r2 = new Rectangle();
+
+    //////somente para testes//////
+    private SpriteBatch currentBatch;
+    private Texture currenteTexture;
+    ////////////////////////////////
+
 
     public WorldController(Game game){
         this.game = game;
@@ -50,7 +59,7 @@ public class WorldController extends InputAdapter {
 
     private void initLevel(){
         score = 0;
-        level = new Level(Constants.LEVEL_01);
+        level = new Level(com.mygdx.game.Utils.Constants.LEVEL_01);
         initPhysics();
         camera.setTarget(level.whiteBall.body);
     }
@@ -131,7 +140,7 @@ public class WorldController extends InputAdapter {
         }
         ////////////////////////fisica da bola branca/////////////////////
 
-        BodyDef bodyDefWhiteBall = new BodyDef();         //   linha de debug
+        BodyDef bodyDefWhiteBall = new BodyDef();
         bodyDefWhiteBall.type = BodyType.DynamicBody;
 
         bodyDefWhiteBall.position.set(level.whiteBall.position);
@@ -154,7 +163,7 @@ public class WorldController extends InputAdapter {
     }
 
 
-    //////////////////////////////////////////////////////////
+    ////////////////////////////////////// Update //////////////////////////////////////////////
 
     public  void update(float delta){
         handleDebugInput(delta);//Funçao de controle do cena para debuger
@@ -167,7 +176,7 @@ public class WorldController extends InputAdapter {
 
 
 
-    ///////////////////////////colisões com objetos sem corpo fisico////////////////////////////////////////
+    ///////////////////////////colisões com objetos sem corpo fisico (Moedas) ////////////////////////////////////////
 
     private void onCollisionWithGoldCoin(GoldCoin goldCoin){
         goldCoin.collected = true;
@@ -200,7 +209,7 @@ public class WorldController extends InputAdapter {
         }
 
     }
-    ///////////////////////////////////Classes de debug/////////////////////////////////////
+    //////////////////////////////////////  Classes de debug  /////////////////////////////////////
 
     private void handleInputGame (float deltaTime) {
         if (camera.hasTarget(level.whiteBall.body)) {
@@ -262,8 +271,10 @@ public class WorldController extends InputAdapter {
 
     }
 
+    //////////////////////////////////////  Funções de controle  /////////////////////////////////////
+
     private void backToMenu () {
-// switch to menu screen
+        // retornar para o menu screen
         game.setScreen(new MenuScreen(game));
     }
 
@@ -279,11 +290,34 @@ public class WorldController extends InputAdapter {
             Gdx.app.debug(TAG,"Game world resetado");
         } else if (keycode == Input.Keys.ENTER) {// Toggle camera follow
             camera.setTarget(camera.hasTarget() ? null: level.whiteBall.body);
-            Gdx.app.debug(TAG, "Camera follow enabled: " + camera.hasTarget());
+            Gdx.app.debug(TAG,"Camera follow enabled: " + camera.hasTarget());
         }else if (keycode == Input.Keys.ESCAPE) {// back to menu
             backToMenu();
         }
         return false;
+    }
+
+    @Override
+    public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        Gdx.app.debug(TAG,"clique em " + screenX + " / " + screenY);
+        Gdx.app.debug(TAG,"clique em " + level.whiteBall.body.getPosition().x + " / " + level.whiteBall.body.getPosition().y);
+        //level.whiteBall.body.setTransform(0,0,0);
+        if(Math.sqrt(Math.pow((level.whiteBall.body.getPosition().x - screenX),2) +  Math.pow((level.whiteBall.body.getPosition().y - screenY),2)) <= (0.5f) ){
+            Gdx.app.debug(TAG,"clique na branca");
+           return super.touchDown(screenX, screenY, pointer, button);
+        }
+        Gdx.app.debug(TAG,"clique na mesa");
+        return super.touchDown(screenX, screenY, pointer, button);
+    }
+
+    @Override
+    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
+        return super.touchUp(screenX, screenY, pointer, button);
+    }
+
+    @Override
+    public boolean touchDragged(int screenX, int screenY, int pointer) {
+        return super.touchDragged(screenX, screenY, pointer);
     }
 
 }
