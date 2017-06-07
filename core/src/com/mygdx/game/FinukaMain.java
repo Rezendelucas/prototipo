@@ -19,7 +19,6 @@ public class FinukaMain extends Game {
 	public void create () {
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
 		Assets.instance.init(new AssetManager());
-		Gdx.app.debug(Tag," Tela do game pronta para iniciar: ");
 		setScreen(new MenuScreen(this));
 	}
 

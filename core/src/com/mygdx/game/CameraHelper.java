@@ -26,6 +26,8 @@ public class CameraHelper {
         zoom = 1.0f;
     }
 
+
+
     public void update(float delta){
         if(!hasTarget())return;
         position.x = target.getPosition().x ;

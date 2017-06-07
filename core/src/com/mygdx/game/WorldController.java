@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef.BodyType;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -19,6 +20,8 @@ import com.mygdx.game.Models.Ball;
 import com.mygdx.game.Models.Borda;
 import com.mygdx.game.Models.GoldCoin;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.mygdx.game.Screens.AbstractGameScreen;
+import com.mygdx.game.Screens.GameScreen;
 import com.mygdx.game.Screens.MenuScreen;
 
 
@@ -299,7 +302,10 @@ public class WorldController extends InputAdapter {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        Gdx.app.debug(TAG,"clique em " + screenX + " / " + screenY);
+        Vector3 ponto = new Vector3(screenX, screenY, 0);
+        //.camera.unproject(ponto);
+
+        Gdx.app.debug(TAG,"clique em " + ponto.x + "/" + ponto.y );
         Gdx.app.debug(TAG,"clique em " + level.whiteBall.body.getPosition().x + " / " + level.whiteBall.body.getPosition().y);
         //level.whiteBall.body.setTransform(0,0,0);
         if(Math.sqrt(Math.pow((level.whiteBall.body.getPosition().x - screenX),2) +  Math.pow((level.whiteBall.body.getPosition().y - screenY),2)) <= (0.5f) ){
